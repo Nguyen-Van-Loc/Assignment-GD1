@@ -1,0 +1,124 @@
+<div class="container py-3" data-bs-theme="dark">
+    <div class="row px-3">
+        <div class="col-md-2 d-none d-md-flex ">
+            <img src="/image/shopping-bag.png" class="img-fluid" alt="" style="width: 40%;height: 100%;">
+        </div>
+        <div class="col-md-7" style="margin-top: 10px; nav">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary  border border-2 rounded-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"><span class="bi bi-house-door-fill"></span> Trang
+                        Chủ</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div style="margin-left: 10px;" class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"><span
+                                        class="bi bi-bag-check-fill"></span> Sản Phẩm</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="font-size: 20px;margin-top:20px">
+            Danh sách Khách Hàng
+            <hr>
+        </div>
+        <div class="col-md-9">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Thêm khách hàng
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm khách hàng</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/themnguoidung" method="post">
+                                <div class="form-group">
+                                    <label for="name" style="color: white;"> Họ Và Tên </label>
+                                    <input type="text" name="fname" class="form-control" id="name"
+                                        placeholder="Họ Và Tên">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="birt" style="color: white;"> Năm Sinh </label>
+                                    <input type="text" name="name" class="form-control" id="birt"
+                                        placeholder="Năm Sinh">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="address" style="color: white;"> Địa chỉ </label>
+                                    <input type="text" name="course" class="form-control" id="address"
+                                        placeholder="Địa chỉ">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone" style="color: white;"> Số điện thoại </label>
+                                    <input type="number" name="contact" id="phone" class="form-control"
+                                        placeholder="Số điện thoại">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Đóng</button>
+                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+
+    <div class="col-md-13" style="margin-top: 20px;">
+        <table class="table text-left table-dark  align-middle">
+            <thead>
+                <tr>
+                    <th class="col-md-1" scope="col">ID</th>
+                    <th class="col-md-4" scope="col">Họ và tên</th>
+                    <th class="col-md-3" scope="col">Ngày Sinh</th>
+                    <th class="col-md-1" scope="col">Quê Quán</th>
+                    <th class="col-md-2" class="text-center" scope="col">Chức năng</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each khach}}
+                <tr>
+                    <th scope="row">{{this.id}}</th>
+                    <td>{{this.name}}</td>
+                    <td>{{this.birt}}</td>
+                    <td>{{this.address}}</td>
+                    <td><button type="button" style="margin-right: 10px;" class="btn btn-outline-primary">Chi
+                            tiết</button><button type="button" class="btn btn-outline-primary"
+                            style="margin-right: 10px;">Sửa</button><button type="button"
+                            class="btn btn-outline-primary">Xóa</button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

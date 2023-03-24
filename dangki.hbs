@@ -1,31 +1,43 @@
-    <div class="container">
-        <div class="row px-3">
-            <div class="col-lg-10 col-x1-9 card flex-row mx-auto px-0">
-                <div class="img-left d-none d-md-flex">
-                    <img src="/image/pexels-tembela-bohle-1884579.jpg" alt="">
-                </div>
-                <div class="card-body">
-                    <h4 class="title text-center mt-4">Đăng Kí</h4>
-                    <form action="" class="form-box px-3">
-                        <div class="form-input">
-                            <span><i class="fa fa-envelope"></i></span>
-                            <input type="email" name="" placeholder="Email" tabindex="10" required>
-                        </div>
-                        <div class="form-input">
-                            <span><i class="fa fa-key"></i></span>
-                            <input type="password" name="" placeholder="Mật Khẩu" required>
-                        </div>
-                        <div class="form-input">
-                            <span><i class="fa fa-key"></i></span>
-                            <input type="password" name="" placeholder="Nhập lại Mật Khẩu" required>
-                        </div>
-            
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-block text-uppercase">Đăng Ký</button>
-                        </div>
-                        <hr class="my-4">
-                    </form>
-                </div>
+<link rel="stylesheet" href="/public/style.css">
+{{#if severErr}}
+<div class="alert alert-danger">
+    {{severErr}}
+</div>
+{{/if}}
+<div class="container">
+    <div class="row px-3">
+        <div class="col-lg-10 col-x1-9 card flex-row mx-auto px-0">
+            <div class="img-left d-none d-md-flex">
+            </div>
+            <div class="card-body">
+                <h4 class="title text-center mt-4">Đăng Kí</h4>
+                <form action="/dangki" method="post" class="form-box px-3">
+                    <label class="col text-center">
+                        <input type="file" style="display:none">
+                        <img src="https://cdn-icons-png.flaticon.com/256/4825/4825038.png" style="width: 20%;">
+                    </label>
+                    <div class="form-input">
+                        <span><i class="fa fa-envelope"></i></span>
+                        <input type="email" name="email" placeholder="Email" tabindex="10" required>
+                    </div>
+                    <div class="form-input">
+                        <span><i class="fa fa-user"></i></span>
+                        <input type="username" name="username" placeholder="Họ và tên" tabindex="10" required>
+                    </div>
+                    <div class="form-input">
+                        <span><i class="fa fa-key"></i></span>
+                        <input type="password" name="password" placeholder="Mật Khẩu" required>
+                    </div>
+                    <div class="form-input">
+                        <span><i class="fa fa-key"></i></span>
+                        <input type="repassword" name="repassword" placeholder="Nhập Lại Mật Khẩu" required>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-block text-uppercase">Đăng Ký</button>
+                    </div>
+                    <hr class="my-4">
+                </form>
             </div>
         </div>
     </div>
+</div>
