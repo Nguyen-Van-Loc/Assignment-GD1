@@ -1,5 +1,5 @@
 var express = require('express')
-var AccountModel1 = require('./account/khach')
+var AccountModel1 = require('./account/accont')
 var router = express.Router()
 const {mutipleMongooesToObject}=require('./util/monggo')
 router.get('/dangnhap', (req, res) => {
@@ -14,13 +14,12 @@ router.get('/dangki', (req, res) => {
 })
 
 router.get('/trangchu', (req, res, next) => {
-    AccountModel1.find({}).then(khach => {
-        res.render('trangchu', {khach:mutipleMongooesToObject(khach)})
+    AccountModel1.find({}).then(account => {
+        res.render('trangchu', {account:mutipleMongooesToObject(account)})
     }).catch(next);
 })
 router.post('/themnguoidung',(req,res)=>{
-    AccountModel1.findOne({}).sort({_id:'desc'})
-    const count=new AccountModel1(req.body);
-    count.save();
+    const formData=req.body;
+   
 })
 module.exports = router;

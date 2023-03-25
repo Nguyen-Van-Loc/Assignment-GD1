@@ -49,25 +49,25 @@
                             <form action="/themnguoidung" method="post">
                                 <div class="form-group">
                                     <label for="name" style="color: white;"> Họ Và Tên </label>
-                                    <input type="text" name="fname" class="form-control" id="name"
+                                    <input type="text" name="name" class="form-control" id="name"
                                         placeholder="Họ Và Tên">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="birt" style="color: white;"> Năm Sinh </label>
-                                    <input type="text" name="name" class="form-control" id="birt"
+                                    <input type="text" name="birt" class="form-control" id="birt"
                                         placeholder="Năm Sinh">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="address" style="color: white;"> Địa chỉ </label>
-                                    <input type="text" name="course" class="form-control" id="address"
+                                    <input type="text" name="address" class="form-control" id="address"
                                         placeholder="Địa chỉ">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="phone" style="color: white;"> Số điện thoại </label>
-                                    <input type="number" name="contact" id="phone" class="form-control"
+                                    <input type="number" name="phone" id="phone" class="form-control"
                                         placeholder="Số điện thoại">
                                 </div>
                                 <div class="modal-footer">
@@ -97,23 +97,18 @@
                 <tr>
                     <th class="col-md-1" scope="col">ID</th>
                     <th class="col-md-4" scope="col">Họ và tên</th>
-                    <th class="col-md-3" scope="col">Ngày Sinh</th>
-                    <th class="col-md-1" scope="col">Quê Quán</th>
                     <th class="col-md-2" class="text-center" scope="col">Chức năng</th>
                 </tr>
             </thead>
 
             <tbody>
-                {{#each khach}}
+                {{#each account}}
                 <tr>
-                    <th scope="row">{{this.id}}</th>
-                    <td>{{this.name}}</td>
-                    <td>{{this.birt}}</td>
-                    <td>{{this.address}}</td>
-                    <td><button type="button" style="margin-right: 10px;" class="btn btn-outline-primary">Chi
-                            tiết</button><button type="button" class="btn btn-outline-primary"
-                            style="margin-right: 10px;">Sửa</button><button type="button"
-                            class="btn btn-outline-primary">Xóa</button></td>
+                    <th scope="row">{{this._id}}</th>
+                    <td>{{this.email}}</td>
+                    <td>
+                        <button  type="button" class="btn btn-outline-primary"style="margin-right: 10px;"  ><a style="text-decoration: none;" href="/update/{{this._id}}">Sửa</a> </button>
+                        <button  type="button" class="btn btn-outline-primary" ><a href="/{{this._id}}" style="text-decoration: none;">Xoa</a></button></td>
                 </tr>
                 {{/each}}
             </tbody>

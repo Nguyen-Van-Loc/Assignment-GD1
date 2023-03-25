@@ -47,7 +47,7 @@ app.post('/dangki',  (req, res) => {
                 password: pass,
                 repassword:pass1
             }).then(data => {
-                res.render('dangnhap')
+                res.redirect('/dangnhap')
             })
 
         }
@@ -55,6 +55,12 @@ app.post('/dangki',  (req, res) => {
         res.status(400).json('Tai khoan that bai')
     })
 
+})
+app.get('/trangchu',(req,res)=>{
+    res.render('trangchu')
+})
+app.get('/dangnhap',(req,res)=>{
+    res.render('dangnhap')
 })
 app.post('/dangnhap', (req, res) => {
     var email = req.body.email;
@@ -64,7 +70,7 @@ app.post('/dangnhap', (req, res) => {
         password: pass
     }).then(data => {
         if (data) {
-            res.render('trangchu')
+            res.redirect('/trangchu')
         } else {
             req.flash('message', 'Đăng nhập thất bại')
             res.redirect('/dangnhap')
@@ -73,6 +79,35 @@ app.post('/dangnhap', (req, res) => {
         res.status(400).json('Có lỗi bên sever')
     })
 })
+app.get('/:id',async (req,res)=>{
+    try {
+        const user = await AccountModel.findByIdAndDelete(req.params.id,req.body)
+        if(!user){
+            res.status(404).send('ko co file')
+        }else{
+            res.status(200).redirect('/trangchu')
+        }
+    } catch (error) {
+        res.status(500).send(err)
+    }
+})
+app.get("/update/:id", async (req, res) => {
+    try {
+        const user = await AccountModel.findById(req.params.id);
+        res.render('update', {
+            viewTitle: "update user",
+            username:user.username,
+            email:user.email,
+            password:user.password,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+});
+app.post("/update/:id", async (req, res) => {
+    AccountModel.updateOne({_id:req.body.id},req.body).then(()=>res.redirect('/trangchu'));
+});
+
 app.listen(3000, () => {
     console.log(`Sever started on port`);
 })
