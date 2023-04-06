@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h1>Update</h1>
+      <form action="/{{account._id}}?_method=PUT" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" value="{{account.username}}" placeholder="Enter your name"
+            required name="username">
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" value="{{account.email}}" placeholder="Enter your email"
+            required name="email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" value="{{account.password}}" id="password"
+            placeholder="Enter your password" required name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
