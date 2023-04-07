@@ -101,21 +101,23 @@
     <tbody>
 
         <div class="col-12">
+           
             <div class="row ">
+                 {{#each sanpham}}
                 <div class="col-lg-3 col-md-6 ">
-                    {{#each sanpham}}
                     <div class=" col-12 rounded-3 border ">
                         <div class="text-center">
-                            <img src="./image/{{this.image}}" style="margin-top: 10px;" alt="">
+                            <img src="./image/{{this.image}}" style="margin-top: 10px; width: 100%;" alt="">
                         </div>
                         <h5 class="card-title" style="margin-top: ;">{{this.tensp}}</h5>
                         <p class="card-text">{{this.mota}}</p>
                         <h5 class="card-title">${{this.gia}}</h5>
                         <a href="#" class="btn btn-primary" style="margin-bottom: 20px;">Mua</a>
                     </div>
-                    {{/each}}
                 </div>
+                 {{/each}}
             </div>
+           
         </div>
 
     </tbody>
