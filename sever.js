@@ -4,12 +4,14 @@ const expressHbs = require('express-handlebars');
 var router = require('./router.js')
 var bodyParser = require('body-parser');
 var AccountModel = require('./account/accont')
+var SanphamModel = require('./account/sanpham')
 var cookieParser = require('cookie-parser')
 var session = require('express-session')
 var flash = require('connect-flash');
 const multer = require('multer');
 var methodOverride = require('method-override')
 const { mongooestoObject,mutipleMongooesToObject } = require('./util/monggo.js');
+const { helpers } = require('handlebars');
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cookieParser(''))
@@ -43,7 +45,7 @@ var upload=multer({storage:Storage})
 app.use(flash())
 app.use('/public', express.static('public'))
 app.use('/image', express.static('image'))
-app.engine('.hbs', expressHbs.engine({ extname: "hbs", defaultLayout: "main" }))
+app.engine('.hbs', expressHbs.engine({ extname: "hbs", defaultLayout: "main", helpers: { sum: (a, b) => a + b }}))
 app.set('view engine', '.hbs');
 app.set('views', './');
 app.use('/', router);
@@ -143,6 +145,20 @@ app.post('/themnguoidung',upload.single('anh1'), (req, res) => {
 })
 app.post('/search',(req,res,next)=>{
     AccountModel.find({username:req.body.username}).then(account=>{res.render('trangchu',{account:mutipleMongooesToObject(account)})})
+})
+app.post('/themsanpham',upload.single('anhsp'),(req,res)=>{
+    var image=  req.file.filename;
+    var tensp = req.body.tensp;
+    var gia = req.body.gia;
+    var mota = req.body.mota;
+    SanphamModel.insertMany({
+        image:image,
+        tensp: tensp,
+        gia: gia,
+        mota: mota,
+    }).then(data => {
+        res.redirect('/sanpham')
+    })
 })
 
 app.listen(3000, () => {

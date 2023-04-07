@@ -52,28 +52,30 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="/themnguoidung" method="post">
+                            <form action="/themsanpham" method="post" enctype="multipart/form-data">
+                                <div class="text-center">
+                                    <label style="width: 100px;" class=" text-center">
+                                        <input type="file" style="display:none" name="anhsp" id="anh">
+                                        <img src="https://cdn-icons-png.flaticon.com/256/4825/4825038.png"
+                                            style="width: 100px;">
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tensp" style="color: white;"> Tên Sản Phẩm </label>
+                                    <input type="text" name="tensp" class="form-control" id="tensp"
+                                        placeholder="Tên Sản Phẩm">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gia" style="color: white;"> Giá </label>
+                                    <input type="number" min="0" F name="gia" class="form-control" id="gia"
+                                        placeholder="Giá">
+                                </div>
 
                                 <div class="form-group">
-                                    <label for="username" style="color: white;"> Họ Và Tên </label>
-                                    <input type="text" name="username" class="form-control" id="username"
-                                        placeholder="Họ Và Tên">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email" style="color: white;"> Email </label>
-                                    <input type="email" name="email" class="form-control" id="email"
-                                        placeholder="Email">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="password" style="color: white;"> Password </label>
-                                    <input type="password" name="password" id="password" class="form-control"
-                                        placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <label for="repassword" style="color: white;"> RePassword </label>
-                                    <input type="password" name="repassword" id="repassword" class="form-control"
-                                        placeholder="RePassword">
+                                    <label for="exampleFormControlTextarea1" style="color: white;" class="form-label">Mô
+                                        tả</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="mota"
+                                        placeholder="Mô tả" rows="3"></textarea>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
@@ -96,23 +98,26 @@
         </div>
     </div>
     <hr>
-    <div class="col-12">
-        <div class="row ">
-            <div class="col-lg-3 col-md-6 ">
-                <div class=" col-12 rounded-3 border ">
-                    <div class="text-center">
-                        <img src="./image/pexels-sebastiaan-stam-1643025.jpg" style="margin-top: 10px;" alt="">
+    <tbody>
+
+        <div class="col-12">
+            <div class="row ">
+                <div class="col-lg-3 col-md-6 ">
+                    {{#each sanpham}}
+                    <div class=" col-12 rounded-3 border ">
+                        <div class="text-center">
+                            <img src="./image/{{this.image}}" style="margin-top: 10px;" alt="">
+                        </div>
+                        <h5 class="card-title" style="margin-top: ;">{{this.tensp}}</h5>
+                        <p class="card-text">{{this.mota}}</p>
+                        <h5 class="card-title">${{this.gia}}</h5>
+                        <a href="#" class="btn btn-primary" style="margin-bottom: 20px;">Mua</a>
                     </div>
-                    <h5 class="card-title" style="margin-top: ;">Ao nam</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <h5 class="card-title" >$200</h5>
-                    <a href="#" class="btn btn-primary" style="margin-bottom: 20px;">Mua</a>
+                    {{/each}}
                 </div>
-
             </div>
-
         </div>
-    </div>
+
+    </tbody>
 
 </div>
