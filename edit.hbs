@@ -2,12 +2,23 @@
   <div class="row">
     <div class="col-md-6 mx-auto">
       <h1>Update</h1>
-      <form action="/{{account._id}}?_method=PUT" method="POST">
+      <form action="/{{account._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
         <div class="form-group">
+          <div class="text-center">
+            <label style="width: 100px;" class=" text-center">
+              <input type="file" style="display:none" name="anhud1" required id="anh">
+              <img src="/image/{{account.image}}" style="width: 100px;">
+            </label>
+          </div>
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name" value="{{account.username}}" placeholder="Enter your name"
             required name="username">
         </div>
+        <label>Phân Quyền</label>
+        <select class="form-select" aria-label="Default select example" name="role">
+          <option value="admin">Admin</option>
+          <option value="user">User</option>
+        </select>
         <div class="form-group">
           <label for="email">Email address</label>
           <input type="email" class="form-control" id="email" value="{{account.email}}" placeholder="Enter your email"

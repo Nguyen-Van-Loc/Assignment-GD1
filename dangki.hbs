@@ -12,12 +12,12 @@
             <div class="card-body">
                 <h4 class="title text-center mt-4">Đăng Kí</h4>
                 <form action="/dangki" method="post" class="form-box px-3" enctype="multipart/form-data">
-                <div class="text-center">
-                    <label style="width: 100px;" class=" text-center">
+                    <div class="text-center">
+                        <label style="width: 100px;" class=" text-center">
                             <input type="file" style="display:none" name="anh" id="anh">
                             <img src="https://cdn-icons-png.flaticon.com/256/4825/4825038.png" style="width: 100px;">
-                    </label>
-                </div>
+                        </label>
+                    </div>
                     <div class="form-input">
                         <span><i class="fa fa-envelope"></i></span>
                         <input type="email" name="email" placeholder="Email" tabindex="10" required value="{{email}}">
@@ -30,10 +30,10 @@
                         <span><i class="fa fa-key"></i></span>
                         <input type="password" name="password" placeholder="Mật Khẩu" required>
                     </div>
-                    <div class="form-input">
+                    {{!-- <div class="form-input">
                         <span><i class="fa fa-key"></i></span>
                         <input type="password" name="repassword" placeholder="Nhập Lại Mật Khẩu" required>
-                    </div>
+                    </div> --}}
                     <div class="mb-3">
                         <button type="submit" class="btn btn-block text-uppercase">Đăng Ký</button>
                     </div>

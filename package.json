@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "alert": "^5.1.4",
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.20.2",
     "bootstrap-icons": "^1.10.3",
     "connect-flash": "^0.1.1",
@@ -15,6 +16,7 @@
     "fs": "^0.0.1-security",
     "handlebars": "^4.7.7",
     "html": "^1.0.0",
+    "jsonwebtoken": "^9.0.0",
     "method-override": "^3.0.0",
     "mongoose": "^7.0.3",
     "mongoose-sequence": "^5.3.1",
